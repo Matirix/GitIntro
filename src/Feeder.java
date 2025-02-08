@@ -40,6 +40,6 @@ public class Feeder {
 		 * Simulates many days SimulateOne day is called.
 		 */
 		
-		return 1;
+		return 2;
 		}
 }
