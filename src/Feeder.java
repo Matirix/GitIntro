@@ -33,13 +33,39 @@ public class Feeder {
 		* as described in part (b)
 		* Preconditions: numBirds > 0, numDays > 0
 		*/
+		
+		if(currentFood <= 0) {
+			System.out.println("there is no food in this simulation, add food");
+			return;
+		}
+		if(Math.random() > 0.05) {
+			currentFood = 0;
+			System.out.println("there are no food to eat as a bear came and ate them all");
+		}
+		else {
+			int birdsApitite = (int)(Math.random() * 41) + 10;
+			
+			int totalfoodEaten = birdsApitite * numBirds;
+			
+			if(totalfoodEaten > currentFood) {
+				currentFood = 0;
+				System.out.println("there are no food left");
+			}
+			else {
+				currentFood -= totalfoodEaten;
+                System.out.println("the birds all ate and there are " + currentFood + " grams of food left");
+			}
+		}
 	}
 	public int simulateManyDays(int numBirds, int numDays) {
 		/**
 		 * TODO PART B:
 		 * Simulates many days SimulateOne day is called.
 		 */
-		
-		return 1;
+		for(int i = 0; i < numDays; i++) {
+			simulateOneDay(numBirds);
 		}
+		
+		return currentFood;
+	}
 }
