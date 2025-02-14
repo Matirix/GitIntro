@@ -4,6 +4,13 @@
  * https://apcentral.collegeboard.org/media/pdf/ap24-frq-comp-sci-a.pdf 
  * PLEASE READ THE PROMPT CAREFULLY BEFORE ATTEMPTING
  * Also make sure you are on your own branch before pushing, you can check what branch you are on by doing 'git branch -a'
+ * 
+ * 8/9 Marks - GOOD JOB! Nice work on using git as well
+ * IN depth feedback below.
+ * -1 mark(s) for not including guard statement in part B // if (numFood == 0) return numDays; 
+ * 
+ * 
+ * 
  */
 public class Feeder {
 	/**
@@ -22,6 +29,10 @@ public class Feeder {
 	}
 	
 	/**
+	 * 
+	 * 
+	 *  4/4 marks
+	 * 
 	* Simulates one day with numBirds birds or possibly a bear at the bird feeder,
 	* as described in part (a)
 	* Precondition: numBirds > 0
@@ -38,7 +49,7 @@ public class Feeder {
 			System.out.println("there is no food in this simulation, add food");
 			return;
 		}
-		if(Math.random() > 0.05) {
+		if(Math.random() > 0.05) { // Teacher: Doesn't this mean that the bear will come 95% of the time? While this is technically wrong, CSA doesn't deduct you for it.
 			currentFood = 0;
 			System.out.println("there are no food to eat as a bear came and ate them all");
 		}
@@ -57,15 +68,29 @@ public class Feeder {
 			}
 		}
 	}
+	
+	/**
+	 *	4/5 marks
+	 * 	
+	 * 
+	 * @param numBirds
+	 * @param numDays
+	 * @return
+	 */
 	public int simulateManyDays(int numBirds, int numDays) {
 		/**
 		 * TODO PART B:
 		 * Simulates many days SimulateOne day is called.
 		 */
 		for(int i = 0; i < numDays; i++) {
+			// There's a required 'guard' statement here in case numFoods = 0. 
+			// BUT I see that you implemented it within simulateOneDay which is best practice (You typically implement the 'checks' in the beginning
+			// so as to not waste space. 
+			// BUT unfortunately, the guidelines will have me deduct you for not including the guard statement.
+			// if (currentFood) { return numDays };
 			simulateOneDay(numBirds);
 		}
 		
-		return currentFood;
+		return currentFood; // Solution returns numDays but it doesn't matter what it returns
 	}
 }
